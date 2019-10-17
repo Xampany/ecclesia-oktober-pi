@@ -1,0 +1,45 @@
+<p>color-form works!</p>
+<!-- Model driven / Reactive form -->
+<form [formGroup]="form">
+  <div class="field">
+    <label class="label">Color</label>
+    <div class="control">
+      <input formControlName="color" class="input" type="text" />
+    </div>
+  </div>
+</form>
+
+<!-- Template driven form -->
+<form #myForm="ngForm" (ngSubmit)="updateColor(myForm.value)">
+  <div class="field">
+    <label class="label">Color</label>
+    <div class="control">
+      <input
+        [(ngModel)]="color"
+        required
+        minlength="3"
+        name="color"
+        class="input"
+        type="text"
+        [ngModelOptions]="{ updateOn: 'blur' }"
+        #myInput="ngModel"
+        [ngClass]="{ 'is-danger': myInput.invalid }"
+      />
+    </div>
+    <p *ngIf="myInput.hasError('required')" class="help is-danger">
+      Please enter a value
+    </p>
+  </div>
+
+  <div class="field is-grouped">
+    <div class="control">
+      <button type="submit" class="button is-link" [disabled]="myForm.invalid">
+        Submit
+      </button>
+    </div>
+    <div class="control">
+      <button class="button is-text">Cancel</button>
+    </div>
+  </div>
+</form>
+<pre><code>{{ myInput.errors | json }}</code></pre>

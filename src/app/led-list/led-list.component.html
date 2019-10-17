@@ -1,11 +1,20 @@
 <p>led-list works!</p>
 
+<pre>
+  {{ timer$ | async }}
+</pre>
+
 <table>
   <tbody>
     <tr>
       <td *ngFor="let thing of leds">
-        <pi-led [led]="thing"></pi-led>
+        <pi-led [led]="thing" (ledClick)="updateLed($event)"></pi-led>
+        <a [routerLink]="['/leds', thing.index]">Details</a>
       </td>
     </tr>
   </tbody>
 </table>
+
+<pre>
+  {{ timer$ | async }}
+</pre>

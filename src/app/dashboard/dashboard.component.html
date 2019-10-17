@@ -1,0 +1,13 @@
+<p>dashboard works!</p>
+<section class="columns">
+  <div class="column is-one-third">
+    <!-- Formular einbauen -->
+    <pi-color-form></pi-color-form>
+  </div>
+  <div class="column">
+    <!-- Liste der Leds anzeigen -->
+    <pi-led-list #list></pi-led-list>
+    <!-- Pandel mit Buttons -->
+    <pi-panel (reload)="list.readLeds()"></pi-panel>
+  </div>
+</section>
